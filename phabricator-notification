@@ -11,21 +11,21 @@
 ### END INIT INFO
 
 ## Configuration
-NOTIFICATION_USER=zolli
-PHABRICATOR_HOME=/var/www/phabricator/location/phabricator
+NOTIFICATION_USER=phd
+PHABRICATOR_HOME=/var/www/phab/phabricator
 
 case "$1" in
  start)
-   su $NOTIFICATION_USER -c $PHABRICATOR_HOME'/bin/aphlict restart'
+   sudo -u $NOTIFICATION_USER "$PHABRICATOR_HOME/bin/aphlict" restart
    ;;
  stop)
-   su $NOTIFICATION_USER -c $PHABRICATOR_HOME'/bin/aphlict stop'
+   sudo -u $NOTIFICATION_USER "$PHABRICATOR_HOME/bin/aphlict" stop
    ;;
  restart)
-   su $NOTIFICATION_USER -c $PHABRICATOR_HOME'/bin/aphlict restart'
+   sudo -u $NOTIFICATION_USER "$PHABRICATOR_HOME/bin/aphlict" restart
    ;;
  status)
-   su $NOTIFICATION_USER -c $PHABRICATOR_HOME'/bin/aphlict status'
+   sudo -u $NOTIFICATION_USER "$PHABRICATOR_HOME/bin/aphlict" status
    ;;
  *)
    echo "Usage: service phabricator-notification {start|stop|restart|status}" >&2
