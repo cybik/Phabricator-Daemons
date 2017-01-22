@@ -11,21 +11,21 @@
 ### END INIT INFO
 
 ## Configuration
-DAEMON_USER=root
-PHABRICATOR_HOME=/var/www/phabricator/location/phabricator
+DAEMON_USER=phd
+PHABRICATOR_HOME=/var/www/phab/phabricator
 
 case "$1" in
  start)
-   su $DAEMON_USER -c $PHABRICATOR_HOME'/bin/phd restart'
+   sudo -u $DAEMON_USER "$PHABRICATOR_HOME/bin/phd" start
    ;;
  stop)
-   su $DAEMON_USER -c $PHABRICATOR_HOME'/bin/phd stop'
+   sudo -u $DAEMON_USER "$PHABRICATOR_HOME/bin/phd" stop
    ;;
  restart)
-   su $DAEMON_USER -c $PHABRICATOR_HOME'/bin/phd restart'
+   sudo -u $DAEMON_USER "$PHABRICATOR_HOME/bin/phd" restart
    ;;
  status)
-   su $DAEMON_USER -c $PHABRICATOR_HOME'/bin/phd status'
+   sudo -u $DAEMON_USER "$PHABRICATOR_HOME/bin/phd" status
    ;;
  *)
    echo "Usage: service phabricator-daemon {start|stop|restart|status}" >&2
