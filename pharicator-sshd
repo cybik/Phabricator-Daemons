@@ -31,7 +31,7 @@ case "$1" in
       su $USER -c $SSHD_BIN' -f '$PHABRICATOR_SSHD_CONFIG_LOCATION$PHABRICATOR_SSHD_CONFIG_NAME
 
       PROCESS_PID=$(ps aux | grep $PHABRICATOR_SSHD_CONFIG_NAME | grep -v grep | awk '{print $2}')
-      echo "Started Phabricatod SSH agent (PID: $PROCESS_PID)";
+      echo "Started Phabricator SSH agent (PID: $PROCESS_PID)";
    else
       echo "Process is already running on PID: $PROCESS_PID"
    fi
